@@ -167,7 +167,7 @@ function Dashboard() {
                 className="py-2 pl-10 pr-4 w-full border-4 border-transparent placeholder-gray-400 focus:bg-gray-50 rounded-lg"
               />
             </div>
-            <h1 className="fs-5 fw-bolder">
+            <h1 className="ms-3  fw-bolder fs-5">
               Task Management & Appointment System
             </h1>
             <div className="flex flex-shrink-0 items-center ml-auto">
@@ -175,11 +175,11 @@ function Dashboard() {
                 <span className="sr-only">User Menu</span>
                 <div className="hidden md:flex md:flex-col md:items-end md:leading-tight">
                   <span className="font-semibold">Grace Simmons</span>
-                  <span className="text-sm text-gray-600">Lecturer</span>
+                  {/* <span className="text-sm text-gray-600">Lecturer</span> */}
                 </div>
                 <span className="h-12 w-12 ml-2 sm:ml-3 mr-2 bg-gray-100 rounded-full overflow-hidden">
                   <img
-                    src="https://randomuser.me/api/portraits/women/68.jpg"
+                    src="/images/11.png"
                     alt="user profile photo"
                     className="h-full w-full object-cover"
                   />
@@ -257,6 +257,10 @@ function Dashboard() {
               <Card name=" Therapist Group" number="6" />
             </section>
             <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+              {/* Appointment Group
+Document Archive
+Document Archive
+Meting Module */}
               <Card name="Create New Tickets" number="6" />
               <Card name="Missing Info Group" number="6" />
               <Card name="All Tickets" number="6" />
