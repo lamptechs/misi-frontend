@@ -3,6 +3,7 @@ import Showcase from "../component/home/Showcase";
 import ExploreMore from "../component/home/ExploreMore";
 import Products from "../component/home/Products";
 import SliderHome from "../component/home/Slider";
+import Dashboard from "../component/Dashboard/Dashboard";
 
 function Home() {
   return (
@@ -14,11 +15,12 @@ function Home() {
         image="test purpose"
       />
       <div className="container">
-        <SliderHome />
-        <Showcase />
-        <ExploreMore />
-        <Products />
+        {/* <SliderHome /> */}
+        {/* <Showcase />
+        <ExploreMore /> */}
+        {/* <Products /> */}
       </div>
+      <Dashboard />
     </>
   );
 }

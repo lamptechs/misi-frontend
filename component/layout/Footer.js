@@ -9,7 +9,7 @@ function Footer() {
         <div className="row gx-4 mt-5 p-3 ">
           <div className="col-md-2 d-flex justify-content-center align-items-center ">
             {/* logo part  section*/}
-            <Link href="/">
+            {/* <Link href="/">
               <a className="navbar-brand">
                 <Image
                   src="/home/Arshi365 New-01.png"
@@ -19,7 +19,7 @@ function Footer() {
                   className="logo "
                 />
               </a>
-            </Link>
+            </Link> */}
           </div>
           <div className="d-flex flex-column col-md-8  justify-content-center align-items-center m-auto p-2">
             <div className="py-2   text-center">

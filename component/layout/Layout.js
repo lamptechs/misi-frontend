@@ -17,9 +17,9 @@ function Layout({ children }) {
           crossOrigin="anonymous"
         ></link>
       </Head> */}
-      <Header />
+      {/* <Header /> */}
       <main>{children}</main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

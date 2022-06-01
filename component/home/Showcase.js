@@ -1,9 +1,9 @@
 import React from "react";
 import Gallery from "react-photo-gallery";
 import Image from "next/image";
-import ProductSliderHeader from "../Product/ProductSliderHeader";
-import ButtonGlobal from "../Product/ButtonGlobal";
-import NewArrivalimage from "/public/images/11.png";
+//import ProductSliderHeader from "../Product/ProductSliderHeader";
+// import ButtonGlobal from "../Product/ButtonGlobal";
+// import NewArrivalimage from "/public/images/11.png";
 function Showcase() {
   const photos = [
     // {
@@ -56,25 +56,16 @@ function Showcase() {
         <div className="col-md-6   my-2 p-2">
           {/* image gallery*/}
           <div className="d-flex flex-column  p-2 m-2  ">
-            <ProductSliderHeader catagoryName="NEW ARRIVALS" />
+            {/* <ProductSliderHeader catagoryName="NEW ARRIVALS" /> */}
             <Gallery photos={photos} className="p-2 mb-4" />
-            {/* <button
-              className="btn rounded-pill p-2 px-3 my-4 "
-              style={{
-                backgroundColor: "white",
-                color: "#ff8095",
-                border: 0,
-              }}
-            >
-              EXPLORE MORE
-            </button> */}
-            <ButtonGlobal btnname="EXPLORE MORE" btnaction="/productList" />
+
+            {/* <ButtonGlobal btnname="EXPLORE MORE" btnaction="/productList" /> */}
           </div>
         </div>
         <div className="d-flex flex-column col-md-6  justify-content-center align-items-center m-auto ">
           <div className="conatiner">
             {/* new arrival image*/}
-            <a href="">
+            {/* <a href="">
               <Image
                 src={NewArrivalimage}
                 alt="new arrrival product"
@@ -82,7 +73,7 @@ function Showcase() {
                 height={546}
                 className="p-5"
               />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

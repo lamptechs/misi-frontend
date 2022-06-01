@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Slider from "react-slick";
-import ButtonGlobal from "../Product/ButtonGlobal";
+//import ButtonGlobal from "../Product/ButtonGlobal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Fade from "react-reveal/Fade";
 import {
@@ -83,10 +83,10 @@ function SliderHome() {
               >
                 DISCOVER THE NEW STYLE
               </button> */}
-                <ButtonGlobal
+                {/* <ButtonGlobal
                   btnname="DISCOVER THE NEW STYLE"
                   btnaction="/productList"
-                />
+                /> */}
               </div>
             </div>
           </div>
@@ -102,21 +102,13 @@ function SliderHome() {
                   data-bs-ride="carousel"
                 >
                   <div className="carousel-inner  ">
-                    <Slider {...settings}>
+                    {/* <Slider {...settings}>
                       {photos.map((photo) => (
                         <div
                           className="carousel-item active  "
                           data-bs-interval="500"
                           key={photo.src}
                         >
-                          {/* <Image
-                          src={photo.src}
-                          alt="new arrrival product"
-                          width={500}
-                          height={562}
-                          layout="responsive"
-                          className="d-block w-100"
-                        /> */}
                           <img
                             src={photo.src}
                             alt="new arrrival product"
@@ -127,7 +119,15 @@ function SliderHome() {
                           />
                         </div>
                       ))}
-                    </Slider>
+                    </Slider> */}
+                    {/* <Image
+                          src={photo.src}
+                          alt="new arrrival product"
+                          width={500}
+                          height={562}
+                          layout="responsive"
+                          className="d-block w-100"
+                        /> */}
                   </div>
                   <button
                     className="carousel-control-prev fs-1 fw-bolder"

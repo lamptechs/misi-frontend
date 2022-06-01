@@ -3,8 +3,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import useSWR from "swr";
-import ProductSliderHeader from "../Product/ProductSliderHeader";
-import ProductsShowcase from "../Product/ProductsShowcase";
+//import ProductSliderHeader from "../Product/ProductSliderHeader";
+//import ProductsShowcase from "../Product/ProductsShowcase";
 
 const Products = () => {
   const { data, error } = useSWR(
@@ -14,10 +14,10 @@ const Products = () => {
   //console.log("testing data from apiAction", Products);
   return (
     <>
-      <ProductSliderHeader catagoryName="LIFESTYLE" />
+      {/* <ProductSliderHeader catagoryName="LIFESTYLE" />
       <div className="container my-4" style={{ backgroundColor: "#ffddde" }}>
         <ProductsShowcase data={data} />
-      </div>
+      </div> */}
     </>
   );
 };
