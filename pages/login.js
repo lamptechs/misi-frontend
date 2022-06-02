@@ -7,7 +7,6 @@ import { faGoogle } from "@fortawesome/free-solid-svg-icons";
 import { useSession, getProviders, signIn, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import useAuth from "../hook/useAuth";
-import ProductSliderHeader from "../component/Product/ProductSliderHeader";
 
 function Login() {
   const { data: session } = useSession();
@@ -27,7 +26,6 @@ function Login() {
             SIGN IN
           </h1>  */}
 
-          <ProductSliderHeader catagoryName="SIGN IN" />
           <form>
             <div className="mb-3">
               <label htmlFor="exampleInputEmail1" className="form-label">

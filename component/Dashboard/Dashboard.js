@@ -5,6 +5,7 @@ function Dashboard() {
   return (
     <>
       <body className="flex bg-gray-100 min-h-screen">
+        {/* aside */}
         <aside className="hidden sm:flex sm:flex-col">
           <a
             href="#"
@@ -260,6 +261,7 @@ function Dashboard() {
           </div>
         </aside>
         <div className="flex-grow text-gray-800">
+          {/* header */}
           <header className="flex items-center h-20 px-6 sm:px-10 bg-white">
             <button className="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
               <span className="sr-only">Menu</span>
@@ -368,6 +370,7 @@ function Dashboard() {
               </div>
             </div>
           </header>
+          {/* inside of container */}
           <main className="p-6 sm:p-10 space-y-6">
             <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
               <Card name="Create New Tickets" number="6" />
@@ -388,10 +391,6 @@ function Dashboard() {
               <Card name=" Therapist Group" number="6" />
             </section>
             <section className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
-              {/* Appointment Group
-Document Archive
-Document Archive
-Meting Module */}
               <Card name="Create New Tickets" number="6" />
               <Card name="Missing Info Group" number="6" />
               <Card name="All Tickets" number="6" />

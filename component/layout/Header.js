@@ -1,369 +1,124 @@
 import React, { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faRectangleList } from "@fortawesome/free-solid-svg-icons";
-import Image from "next/image";
-import Link from "next/link";
-import { useCart } from "react-use-cart";
-import { useSession, signIn, signOut } from "next-auth/react";
-import useAuth from "/hook/useAuth";
+
 function Header() {
-  const { data: session } = useSession();
-  // navbar top
-  const [show, setShow] = useState(true);
-  const controlNavbar = () => {
-    if (window.scrollY > 20) {
-      setShow(false);
-    } else {
-      setShow(true);
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("scroll", controlNavbar);
-    return () => {
-      window.removeEventListener("scroll", controlNavbar);
-    };
-  }, []);
-  // cart item
-  const {
-    isEmpty,
-    totalUniqueItems,
-    items,
-    totalItems,
-    cartTotal,
-    updateItemQuantity,
-    removeItem,
-    emptyCart,
-  } = useCart();
-  //search
-  const { handleSearchChange, searchInput } = useAuth();
-  const [results, setResults] = useState([]);
-
-  useEffect(() => {
-    const urls = [
-      "https://arshi365.lamptechs.com/api/admin/products",
-      "https://arshi365.lamptechs.com/api/admin/todaysDeal",
-    ];
-
-    Promise.all(
-      urls.map((url) =>
-        fetch(url)
-          .then((response) => response.json())
-          .then((data) => setResults(data))
-          .catch((error) => console.log("There was a problem!", error))
-      ),
-      []
-    );
-  }, []);
-
   return (
-    <header
-      className={`  sticky-top  header-bg    ${
-        !show && " shadow-lg  rounded bg-light  nav-scroll"
-      }`}
-    >
-      {/* <!-- navbar --> */}
-      <nav className="container navbar navbar-expand-lg p-0" id="navbar-scroll">
-        {/* web view */}
-        <div className="container-fluid  ">
-          {/* logo part  section*/}
-
-          <Link href="/">
-            <a className="navbar-brand">
-              <img
-                src="/home/Arshi365 New-01.png"
-                alt="ECOMMERCE  LOGO"
-                width={150}
-                height={75}
-              />
-            </a>
-          </Link>
-
-          {/* search section */}
-          <div className="w-50 d-flex justify-content-center align-items-center  responsive-search pe-4">
-            {/* search part */}
-
-            <div className="container">
-              {/* <button
-                className="btn  "
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent"
-                aria-expanded="true"
-                aria-controls="multiCollapseExample1 multiCollapseExample2"
-              >
-                <i className="fa fa-search"></i>
-              </button> */}
-              <div
-                className="row height d-flex justify-content-center align-items-center"
-                id="navbarSupportedContent"
-              >
-                <div className=" ">
-                  <div className="search">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Search in Arshi"
-                      onChange={handleSearchChange}
-                    />
-                    <Link href="/search" passHref>
-                      <button
-                        style={{
-                          backgroundColor: "#fe0098",
-                          color: "white",
-                        }}
-                        className="btn   "
-                        type="submit"
-                        onClick={searchInput}
-                      >
-                        <i className="fa fa-search"></i>
-                      </button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* cart part */}
-          <div className="d-flex   ">
-            {/* <Image
-              src="/home/cart-logo.png"
-              alt="CART-LOGO"
-              width={55}
-              height={52}
-              className="d-inline-block align-text-top  "
-            /> */}
-
-            <span
-              className="me-1"
-              style={{
-                color: "#fe0098",
-              }}
-            >
-              <i className="fas fa-shopping-cart fs-4"></i>
-            </span>
-            <Link href="/cart" passHref>
-              <a className="ms-1  text-decoration-none text-dark">
-                MY CART ({totalItems})
-              </a>
-            </Link>
-          </div>
-          {/*authentication section */}
-          {/* login  */}
-          {/* start */}
-          {session ? (
-            // <li>{session.user?.email}</li>
-            // start
-            <>
-              <div className="nav-item dropdown fs-6 ">
-                <a
-                  className="nav-link active dropdown-toggle"
-                  href="#"
-                  id="creatorsDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <img
-                    src={session.user?.image}
-                    width="25px"
-                    height="25px"
-                    className="rounded-circle"
-                    alt="Picture of the author"
-                  />
-                </a>
-
-                <ul
-                  className="dropdown-menu    nav-style "
-                  aria-labelledby="creatorsDropdown"
-                  style={{ marginLeft: "-127px" }}
-                >
-                  <li>
-                    <a className="fs-6  fw-bolder dropdown-item  " href="#">
-                      Manage My Account
-                    </a>
-                    <Link href="/brand/dashboard">
-                      <a className="fs-6  fw-bolder dropdown-item">My Orders</a>
-                    </Link>
-                    <a className="fs-6  fw-bolder dropdown-item" href="#">
-                      My Reviews
-                    </a>
-
-                    <a className="fs-6  fw-bolder dropdown-item" href="#">
-                      My Returns & cancellation
-                    </a>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    {/* <a className="fs-6  fw-bolder dropdown-item" href="#">
-                      Become a Seller
-                    </a>
-                    <Link href="/brand/settings">
-                      <a className="fs-6  fw-bolder dropdown-item">Settings</a>
-                    </Link>
-
-                    <Link href="/brand/channel">
-                      <a className="fs-6  fw-bolder dropdown-item">Channel</a>
-                    </Link>
-                    <a className="fs-6  fw-bolder dropdown-item" href="#">
-                      Billing NEW
-                    </a>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li> */}
-                    {/* <a className="fs-6  fw-bolder dropdown-item" href="#">
-                      English
-                    </a>
-                    <a className="fs-6  fw-bolder dropdown-item" href="#">
-                      $ USD
-                    </a> */}
-                    <a className="fs-6  fw-bolder dropdown-item" href="#">
-                      Help & support
-                    </a>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-                    <a
-                      className="fs-6  fw-bolder dropdown-item"
-                      href="#"
-                      onClick={signOut}
-                    >
-                      Logout
-                    </a>
-                  </li>
-
-                  {/* <li>
-                        <hr className="dropdown-divider" />
-                      </li>
-                      <li>
-                        <a className="fs-6  fw-bolder dropdown-item" href="#">
-                          WORK
-                        </a>
-                      </li> */}
-                </ul>
-              </div>
-            </>
-          ) : (
-            // end
-            <>
-              <div className="d-flex">
-                {/* <Image
-                  src="/home/icon-login.png"
-                  alt="Picture of the author"
-                  width={20}
-                  height={20}
-                  className="d-inline-block align-text-top  "
-                /> */}
-                <span
-                  className="me-1"
-                  style={{
-                    color: "#fe0098",
-                  }}
-                >
-                  <i className="fs-4 fas fa-user-circle"></i>
-                </span>
-
-                <Link href="/login">
-                  <a className="ms-2   text-decoration-none text-dark">LOGIN</a>
-                </Link>
-              </div>
-              <div className="text-center d-flex   ms-1">
-                {/* <Image
-                  src="/home/icon-register.png"
-                  alt="icon-register"
-                  width={20}
-                  height={20}
-                  className=" ms-1"
-                /> */}
-                <span
-                  className="me-1"
-                  style={{
-                    color: "#fe0098",
-                  }}
-                >
-                  <i className="fs-4 fas fa-key"></i>
-                </span>
-                <Link href="/signup">
-                  <a className="text-decoration-none text-dark ms-2">
-                    REGISTER
-                  </a>
-                </Link>
-              </div>
-            </>
-          )}
-          {/* end */}
-        </div>
-      </nav>
-      {/* 2nd navbar */}
-      <nav className="container navbar navbar-expand-lg m-auto text-center   ">
-        <button
-          className="navbar-toggler expand-button "
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo02"
-          aria-controls="navbarTogglerDemo02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+    <div className="flex items-center h-20 px-6 sm:px-10 bg-white">
+      <button className="block sm:hidden relative flex-shrink-0 p-2 mr-2 text-gray-600 hover:bg-gray-100 hover:text-gray-800 focus:bg-gray-100 focus:text-gray-800 rounded-full">
+        <span className="sr-only">Menu</span>
+        <svg
+          aria-hidden="true"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          className="h-6 w-6"
         >
-          <FontAwesomeIcon
-            icon={faRectangleList}
-            className="me-1"
-            style={{
-              fontSize: 48,
-              color: "#fe0098",
-            }}
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M4 6h16M4 12h16M4 18h7"
           />
+        </svg>
+      </button>
+      <div className="relative w-full max-w-md sm:-ml-2">
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+          className="absolute h-6 w-6 mt-2.5 ml-2 text-gray-400"
+        >
+          <path
+            fillRule="evenodd"
+            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+            clipRule="evenodd"
+          />
+        </svg>
+        <input
+          type="text"
+          role="search"
+          placeholder="Search..."
+          className="py-2 pl-10 pr-4 w-full border-4 border-transparent placeholder-gray-400 focus:bg-gray-50 rounded-lg"
+        />
+      </div>
+      <small className="fs-6 fw-bolder    ">
+        Task Management & Appointment System
+      </small>
+      <div className="flex flex-shrink-0 items-center ml-auto">
+        <button className="inline-flex items-center p-2 hover:bg-gray-100 focus:bg-gray-100 rounded-lg">
+          <span className="sr-only">User Menu</span>
+          <div className="hidden md:flex md:flex-col md:items-end md:leading-tight">
+            <span className="font-semibold">Grace Simmons</span>
+            {/* <span className="text-sm text-gray-600">Lecturer</span> */}
+          </div>
+          <span className="h-12 w-12 ml-2 sm:ml-3 mr-2 bg-gray-100 rounded-full overflow-hidden">
+            <img
+              src="/images/11.png"
+              alt="user profile photo"
+              className="h-full w-full object-cover"
+            />
+          </span>
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+            className="hidden sm:block h-6 w-6 text-gray-300"
+          >
+            <path
+              fillRule="evenodd"
+              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+              clipRule="evenodd"
+            />
+          </svg>
         </button>
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-          <ul className="navbar-nav m-auto   mb-lg-0">
-            {/* register  */}
-
-            <Link href="/" passhref>
-              <a
-                className="nav-link   active  ms-4 text-dark "
-                aria-current="page"
-              >
-                <Image
-                  src="/home/house-solid.png"
-                  alt="Picture  house-solid"
-                  width={20}
-                  height={20}
-                  className=" "
-                />
-              </a>
-            </Link>
-
-            <Link href="/todayDeals" passHref>
-              <a
-                className="nav-link   active    text-dark "
-                aria-current="page"
-              >
-                Today Deals
-              </a>
-            </Link>
-            <Link href="/newArrivals" passHref>
-              <a className="nav-link ms-1 text-dark">New Arrivals</a>
-            </Link>
-            <Link href="/tops-collection" passHref>
-              <a className="nav-link ms-1 text-dark">Tops</a>
-            </Link>
-            <Link href="/gift-cards" passHref>
-              <a className="nav-link ms-1 text-dark">Gift Cards</a>
-            </Link>
-
-            <Link href="/customer-care" passHref>
-              <a className="nav-link  ms-1 text-dark" aria-current="page">
-                Customer Care
-              </a>
-            </Link>
-            <Link href="/contact" passHref>
-              <a className="nav-link ms-1 text-dark">Contact</a>
-            </Link>
-          </ul>
+        <div className="border-l pl-3 ml-3 space-x-1">
+          <button className="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
+            <span className="sr-only">Notifications</span>
+            <span className="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-red-500 rounded-full"></span>
+            <span className="absolute top-0 right-0 h-2 w-2 mt-1 mr-2 bg-red-500 rounded-full animate-ping"></span>
+            <svg
+              aria-hidden="true"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+              />
+            </svg>
+          </button>
+          <button className="relative p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:bg-gray-100 focus:text-gray-600 rounded-full">
+            <span className="sr-only">Log out</span>
+            <svg
+              aria-hidden="true"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              className="h-6 w-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+              />
+            </svg>
+          </button>
         </div>
-      </nav>
-    </header>
+      </div>
+    </div>
   );
 }
 
 export default Header;
+
+{
+  /* header */
+}
+
+{
+  /* inside of container */
+}
