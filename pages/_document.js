@@ -47,6 +47,11 @@ class MyDocument extends Document {
          rel="stylesheet"
          type="text/css"
        ></link> */}
+          {/* testadmin */}
+          <link
+            href="https://demo.dashboardpack.com/architectui-html-free/main.css"
+            rel="stylesheet"
+          ></link>
         </Head>
         <body>
           <Main />

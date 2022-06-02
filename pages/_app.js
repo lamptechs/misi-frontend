@@ -32,6 +32,12 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossOrigin="anonymous"
       />
+      {/* testadmin */}
+      <Script src="http://maps.google.com/maps/api/js?sensor=true"></Script>
+      <Script
+        type="text/javascript"
+        src="https://demo.dashboardpack.com/architectui-html-free/assets/scripts/main.js"
+      />
 
       <SessionProvider session={session}>
         <AuthProvider>

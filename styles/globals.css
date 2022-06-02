@@ -11,222 +11,38 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }
-button {
-  font-family: "Roboto", sans-serif;
-  font-size: 17px;
-  color: black;
-}
-.text-color {
-  color: #ff0099;
-}
-.d-flex {
-  align-items: center;
-}
-a {
-  text-decoration: none !important;
-  color: black;
-}
-.custom-nav-icon {
-  background-color: #c1706f;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.logo-size {
-  width: "125px";
-  height: " 125px";
-}
-
-.header-bg {
-  background-color: #fef3ea;
-}
-.row {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-ul.nav-style li a:hover {
-  color: #19a463 !important;
-}
-
-/*  responsive for mobile devices  */
-@media only screen and (max-width: 688px) {
-  .responsive-search {
-    margin-right: auto;
+@layer components {
+  .rc-table-custom table {
+    width: 100%;
   }
-  .expand-button {
-    margin-top: -196px;
-    margin-left: auto;
+
+  li.js-li {
+    display: inline-block;
+    padding: 7px;
+    font-size: 18px;
+  }
+
+  li.js-li.active {
+    color: white;
+    font-weight: 700;
+    background: purple;
+    border-radius: 6px;
+  }
+
+  ul.js-ul {
+    margin-top: 12px;
+    text-align: right;
+  }
+
+  .pure-modal .panel-heading {
+    @apply bg-purple-600!important;
+  }
+
+  p.product-title {
+    margin-top: 0px !important;
   }
 }
-/* media query for responsive */
-/* If the screen size is 601px or more,  */
-@media only screen and (min-width: 601px) {
-  .responsive-new-arrival {
-    margin-left: -219px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-}
-/* GOOGLE_ID: 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,
-GOOGLE_SECRET: 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, */
-
-/* product details */
-.app {
-  max-width: 1200px;
-  width: 100%;
-  margin: 100px auto;
-  box-shadow: 0 0 5px #ccc;
-}
-.details {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  padding: 30px 0;
-}
-.details .big-img {
-  max-width: 500px;
-  min-width: 290px;
-  overflow: hidden;
-  margin: 25px;
-}
-.big-img img {
-  width: 100%;
-  height: 100%;
-  max-height: 550px;
-  display: block;
-  object-fit: cover;
-}
-.details .box {
-  max-width: 500px;
-  min-width: 290px;
-  margin: 25px;
-}
-.box .row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 15px;
-}
-.box .row h2 {
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-.box .row span {
-  color: crimson;
-}
-.box .colors button {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #333;
-  outline: none;
-  margin-right: 5px;
-  cursor: pointer;
-}
-.box p {
-  line-height: 1.5;
-  margin: 15px 0;
-}
-.thumb {
-  width: 100%;
-  height: 100px;
-  display: flex;
-  cursor: pointer;
-  margin: 10px 0;
-}
-.thumb img {
-  width: 90px;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-  border: 1px solid #ddd;
-  margin-right: 5px;
-  opacity: 0.7;
-  border-radius: 5px;
-}
-.thumb img.active {
-  opacity: 1;
-  border: 1px solid lightseagreen;
-}
-.box .cart {
-  background: #333;
-  color: white;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  padding: 10px 25px;
-  margin-top: 15px;
-}
-
-@media (max-width: 500px) {
-  /* .thumb {
-    height: 50px;
-  } */
-  .thumb img {
-    width: 50px;
-  }
-}
-* {
-  padding: 0;
-  box-sizing: border-box;
-  margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif; */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-/* 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-} */
-
-/* separator of auth */
-.fm-sns-title {
-  margin: 22px 0;
-  height: 22px;
-  text-align: center;
-  font-size: 14px;
-  color: #222;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 16px;
-}
-
-/* reviews and product details secton */
-
-/* search button */
-
-.search {
-  position: relative;
-  box-shadow: 0 0 40px rgba(51, 51, 51, 0.1);
-}
-
-.search input {
-  height: 40px;
-  text-indent: 25px;
-  border: 2px solid #d6d4d4;
-}
-
-.search input:focus {
-  box-shadow: none;
-  border: 2px solid blue;
-}
-
-.search .fa-search {
-  position: absolute;
-  top: 11px;
-  left: 14px;
-}
-
-.search button {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  height: 40px;
-  width: 46px;
-  background: blue;
-}
-/* @media (min-width: 768px) .col-md-8 {
-  flex: 0 0 auto;
-  width: 94.666667%;
-} */
